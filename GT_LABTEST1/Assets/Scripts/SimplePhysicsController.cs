@@ -40,6 +40,11 @@ public class SimplePhysicsController : MonoBehaviour
             }
 
         }
+        if(this.transform.position.y >= 30)
+        {
+            nuke.gameObject.SetActive(true);
+            nuked = true;
+        }
 
     }
 

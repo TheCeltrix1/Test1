@@ -11,7 +11,7 @@ namespace GRIDCITY
         public BuildingProfile myProfile;
         private GameObject treePrefab;
         public int recursionLevel = -1;
-        private int maxLevel = 3;
+        private int maxLevel = 20;
         private CityManager cityManager;
         private Renderer myRenderer;
         private MeshFilter myMeshFilter;
@@ -51,7 +51,6 @@ namespace GRIDCITY
         // Use this for external initialization
         void Start()
         {
-
             int x = Mathf.RoundToInt(transform.position.x + 7.0f);
             int y = Mathf.RoundToInt(transform.position.y);
             int z = Mathf.RoundToInt(transform.position.z + 7.0f);
@@ -113,49 +112,45 @@ namespace GRIDCITY
                         //MODIFY THE CODE BELOW
 
                         random = Random.Range(0, 10);
-                        if ((random < 5) && (!cityManager.CheckSlot(x, y + 1, z)))
+                        if ((random < 5) && (!cityManager.CheckSlot(x + 1, y, z)))
                         {
-                            cityManager.SetSlot(x, y + 1, z, true);
-                            child = Instantiate(treePrefab, transform.position + Vector3.up * 1.01f, Quaternion.identity, this.transform);
+                            cityManager.SetSlot(x + 1, y, z, true);
+                            child = Instantiate(treePrefab, transform.position + Vector3.right, Quaternion.identity, this.transform);
                             int meshNum = myProfile.mainBlocks.Length;
                             int matNum = myProfile.mainMaterials.Length;
-                            Debug.Log(child.GetComponents<TreeTowerBlock>().Length);
                             child.GetComponent<TreeTowerBlock>().Initialize(recursionLevel + 1, myProfile.mainMaterials[Random.Range(0, matNum)], myProfile.mainBlocks[Random.Range(0, meshNum)]);
 
                         };
 
                         random = Random.Range(0, 10);
-                        if ((random < 5) && (!cityManager.CheckSlot(x, y + 1, z)))
+                        if ((random < 5) && (!cityManager.CheckSlot(x - 1, y, z)))
                         {
-                            cityManager.SetSlot(x, y + 1, z, true);
-                            child = Instantiate(treePrefab, transform.position + Vector3.up * 1.01f, Quaternion.identity, this.transform);
+                            cityManager.SetSlot(x - 1, y, z, true);
+                            child = Instantiate(treePrefab, transform.position - Vector3.right, Quaternion.identity, this.transform);
                             int meshNum = myProfile.mainBlocks.Length;
                             int matNum = myProfile.mainMaterials.Length;
-                            Debug.Log(child.GetComponents<TreeTowerBlock>().Length);
                             child.GetComponent<TreeTowerBlock>().Initialize(recursionLevel + 1, myProfile.mainMaterials[Random.Range(0, matNum)], myProfile.mainBlocks[Random.Range(0, meshNum)]);
 
                         };
 
                         random = Random.Range(0, 10);
-                        if ((random < 5) && (!cityManager.CheckSlot(x, y + 1, z)))
+                        if ((random < 5) && (!cityManager.CheckSlot(x, y, z - 1)))
                         {
-                            cityManager.SetSlot(x, y + 1, z, true);
-                            child = Instantiate(treePrefab, transform.position + Vector3.up * 1.01f, Quaternion.identity, this.transform);
+                            cityManager.SetSlot(x, y, z - 1, true);
+                            child = Instantiate(treePrefab, transform.position - Vector3.forward, Quaternion.identity, this.transform);
                             int meshNum = myProfile.mainBlocks.Length;
                             int matNum = myProfile.mainMaterials.Length;
-                            Debug.Log(child.GetComponents<TreeTowerBlock>().Length);
                             child.GetComponent<TreeTowerBlock>().Initialize(recursionLevel + 1, myProfile.mainMaterials[Random.Range(0, matNum)], myProfile.mainBlocks[Random.Range(0, meshNum)]);
 
                         };
 
                         random = Random.Range(0, 10);
-                        if ((random < 5) && (!cityManager.CheckSlot(x, y + 1, z)))
+                        if ((random < 5) && (!cityManager.CheckSlot(x, y, z + 1)))
                         {
-                            cityManager.SetSlot(x, y + 1, z, true);
-                            child = Instantiate(treePrefab, transform.position + Vector3.up * 1.01f, Quaternion.identity, this.transform);
+                            cityManager.SetSlot(x, y, z + 1, true);
+                            child = Instantiate(treePrefab, transform.position + Vector3.forward, Quaternion.identity, this.transform);
                             int meshNum = myProfile.mainBlocks.Length;
                             int matNum = myProfile.mainMaterials.Length;
-                            Debug.Log(child.GetComponents<TreeTowerBlock>().Length);
                             child.GetComponent<TreeTowerBlock>().Initialize(recursionLevel + 1, myProfile.mainMaterials[Random.Range(0, matNum)], myProfile.mainBlocks[Random.Range(0, meshNum)]);
 
                         };
@@ -166,10 +161,9 @@ namespace GRIDCITY
                         if ((random < 5) && (!cityManager.CheckSlot(x, y+1, z)))
                         {
                             cityManager.SetSlot(x, y + 1, z, true);
-                            child = Instantiate(treePrefab, transform.position + Vector3.up * 1.01f, Quaternion.identity, this.transform);
+                            child = Instantiate(treePrefab,transform.position + Vector3.up * 1.01f, Quaternion.identity, this.transform);
                             int meshNum = myProfile.mainBlocks.Length;
                             int matNum = myProfile.mainMaterials.Length;
-                            Debug.Log(child.GetComponents<TreeTowerBlock>().Length);
                             child.GetComponent<TreeTowerBlock>().Initialize(recursionLevel + 1, myProfile.mainMaterials[Random.Range(0, matNum)], myProfile.mainBlocks[Random.Range(0, meshNum)]);
                             
                         };
